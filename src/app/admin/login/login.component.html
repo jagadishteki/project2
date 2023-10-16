@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center mt-3">Registration Form</h1>
+    <div class="offset-md-4 col-md-4">
+      <span class="text-danger" *ngIf="signInError">
+        {{signInError}}
+      </span>
+      <form #login="ngForm" (ngSubmit)="signIn(login.value)">
+        <div class="mb-3">
+          <label for="exampleInputName" class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" ngModel #name="ngModel" id="exampleInputName"
+            aria-describedby="nameHelp" required minlength="3">
+          <span class="text-danger" *ngIf="name.touched && name.errors?.['required']">
+            Name is required
+          </span>
+          <span class="text-danger" *ngIf="name.touched && name.errors?.['minlength']">
+            Name should be more than 3 characters
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel
+            #password="ngModel" required minlength="6">
+          <span class="text-danger" *ngIf="password.touched && password.errors?.['required']">
+            Password is required.
+          </span>
+          <span class="text-danger" *ngIf="password.touched && password.errors?.['minlength']">
+            Password should be more than 6 Characters
+          </span>
+        </div>
+
+        <button [ngClass]="login.valid ? 'col-12 btn btn-success' : 'col-12 btn btn-secondary'" type="submit"
+          [disabled]="login.invalid">Submit</button>
+
+
+      </form>
+    </div>
+  </div>
+</div>

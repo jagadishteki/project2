@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+      <h1 class="text-center mt-3">Registration Form</h1>
+      <div class="offset-md-4 col-md-4">
+        <form #registration="ngForm" (ngSubmit)="submit(registration.value)">
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="user.name" required pattern="[A-Za-z ]*" minlength="3" id="exampleInputName"
+              aria-describedby="nameHelp">
+          </div>
+          <div *ngIf="(name.touched || name.dirty || registration.submitted) && name.invalid">
+            <div *ngIf="name.errors?.['required']">Name field is required.</div>
+            <div *ngIf="name.errors?.['minlength']">Name should be 3 characters Minimum</div>
+            <div *ngIf="name.errors?.['pattern']">Name should be Alphabets only</div>
+          </div>
+  
+  
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" #gender="ngModel" value="Male" [(ngModel)]="user.gender"
+              id="flexRadioDefault1" required>
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check ms-5 form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" #gender="ngModel" value="Female" [(ngModel)]="user.gender" 
+              id="flexRadioDefault2" required="">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+          <div *ngIf="(user.gender.touched || user.gender.dirty || registration.submitted) && user.gender.errors?.['required']">Select Gender</div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" type="email" name="email" #email="ngModel" [(ngModel)]="user.email"
+              aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="user.password">
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Hobbies</label>
+            <div class="form-check">
+              <div class="form-check form-check-inline" *ngFor="let item of hobbies">
+              <input class="form-check-input" type="checkbox" (change)="addHobby(item.id, $event)" [name]="'hobby'+item.id" #hobbies="ngModel" [(ngModel)]="item.status">
+              <label class="form-label">{{item.hobby}}</label>
+            </div>
+          </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Select Location</label>
+            <select class="form-select" name="location" #location="ngModel" [(ngModel)]="user.location" required>
+              <option value="">-- Select --</option>
+              <option *ngFor="let item of locations" [ngValue]="item.id">{{item.location}}</option>
+            </select>
+          </div>
+          <div *ngIf="(user.location.touched || user.location.dirty || registration.submitted) && user.location.errors?.['required']">Select Location</div>
+
+  
+          <div class="mb-3 form-check">
+              <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="terms" #terms="ngModel" [(ngModel)]="user.terms" required>
+              <label class="form-label">Terms & Conditions</label>
+            </div>
+          </div>
+          <div *ngIf="user.terms.touched || user.terms.dirty || registration.submitted && user.terms.errors?.['required']">Accept Terms & Conditions</div>
+          <button [disabled]="registration.invalid" type="submit" class="btn btn-primary col-12">Submit</button>
+        </form>
+        <pre>{{registration.value | json}}</pre>
+      </div>
+    </div>
+  </div>

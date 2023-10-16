@@ -1,0 +1,17 @@
+<div class="container">
+    <form [formGroup]="reactive" (ngSubmit)="submit()">
+        <ng-container formArrayName="languages">
+            <div class="mt-5 form-check form-check-inline" *ngFor="let lang of langs">
+                <label>
+                    <input type="checkbox" value={{lang}} class="form-check-input" (change)="updateLangs($event)">
+                    {{lang}}
+                </label>
+            </div>
+            <input type="submit">
+        </ng-container>
+    </form>
+    <div *ngIf="reactive.get('languages')?.value.length">
+        {{reactive.get('languages')?.value | json}}
+    </div>
+
+</div>

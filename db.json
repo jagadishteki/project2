@@ -1,0 +1,16 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profiles": [
+        { "id": 1, "name": "jagadish", "email": "jagadish@gmail.com", "password": "123456"},
+        { "id": 2, "name": "zain", "email": "zain@gmail.com", "password": "456789"},
+        { "id": 3, "name": "suresh", "email": "suresh@gmail.com", "password": "123789"},
+        { "id": 4, "name": "sobhan", "email": "sobhan@gmail.com", "password": "456123"},
+        { "id": 5, "name": "sekhar", "email": "sekhar@gmail.com", "password": "789123"}
+        
+    ]
+  }

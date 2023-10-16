@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4" *ngIf="user && user.address">
+        <h1>User Details</h1>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>Id</td>
+                <td>{{user.id}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{user.name}}</td>
+            </tr>
+            <tr>
+                <td>User Name</td>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{user.address.street}},<br> {{user.address.suite}}, {{user.address.city}}, {{user.address.zipcode}}
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

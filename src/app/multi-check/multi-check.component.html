@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Multi Check Box</h1>
+    <form #courseForm="ngForm" (ngSubmit)="submit()">
+        <div class="row">
+            <label for="" class="form-label">Name</label>
+            <input type="text" name="name" [(ngModel)]="student.name" class="w-50">
+        </div>
+        
+        <div class="row">
+            <div class="col-2"><label for="" class="form-label">Courses</label></div>
+             <div class="col-10">
+                <div *ngFor="let course of courses">
+                <input type="checkbox" id="{{course.name}}" name="{{course.name}}" [(ngModel)]="course.checked">
+                <label for="{{course.name}}" class="form-label">
+                    {{course.name}}
+                </label>
+            </div>
+            </div>
+        </div>
+
+        <input type="submit">
+    </form>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Selected Courses</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of studentsList">
+                    <td>{{std.id}}</td>
+                    <td>{{std.name}}</td>
+                    <td>{{std.courseNames}}</td>
+                    <td><button (click)="edit(std)">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

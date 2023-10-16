@@ -1,0 +1,12 @@
+<div class="container">
+<h1>Display Images</h1>
+<input type="file" multiple (change)="addImages($event)" />
+    <div *ngFor="let image of images; let i=index">
+        <div class="image-box">
+            <img src="{{image}}" alt="" class="me-3">
+            <button class="close" (click)="removeImg(i)">X</button>
+        </div>
+
+    </div>
+
+</div>
