@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { passwordMatch } from '../password-match';
 
 @Component({
   selector: 'app-reactive-form',
@@ -17,9 +18,11 @@ export class ReactiveFormComponent implements OnInit {
       gender: [],
       email: [],
       password: [],
+      confirmpassword:[],
       location: [],
       terms: []
-    })
+    },
+    {validators: passwordMatch})
   }
 
   submit(){

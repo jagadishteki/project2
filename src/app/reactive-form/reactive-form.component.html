@@ -35,7 +35,11 @@
               <label for="exampleInputPassword1" class="form-label">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
             </div>
-
+            <div class="mb-3">
+              <label for="exampleInputConfirmPassword1" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="exampleInputConfirmPassword1" formControlName="confirmpassword">
+            </div>
+            <div *ngIf="registration.errors?.['passwordMatchError']">Password and Confirm Password are not matched.</div>
             <div class="mb-3">
               <label class="form-label">Select Location</label>
               <select class="form-select" formControlName="location">
